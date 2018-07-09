@@ -13,12 +13,20 @@ window.addEventListener("DOMContentLoaded", function () {
     console.log("input = " + inputText);
     document.querySelectorAll('.img').forEach( function (item) {
       if (inputText == item.dataset.atr) {
-        item.classList.remove('hide');
+        clearTimeout(timerId);
+        item.classList.remove('fadeOut');
+        var timerId = setTimeout(function () {
+          item.classList.remove('hide');
+        }, 500);
         item.classList.add('show');
       }
       else {
+        clearTimeout(timerId);
         item.classList.remove('show');
-        item.classList.add('hide');
+        item.classList.add('fadeOut');
+        var timerId = setTimeout(function () {
+          item.classList.add('hide');
+        }, 500);
       }
     });
   }
